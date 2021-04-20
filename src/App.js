@@ -9,6 +9,7 @@ import Resume from './Components/Resume';
 import Contact from './Components/Contact';
 import Testimonials from './Components/Testimonials';
 import Portfolio from './Components/Portfolio';
+import axios from "axios";
 
 class App extends Component {
 
@@ -26,7 +27,7 @@ class App extends Component {
 
   getResumeData(){
     $.ajax({
-      url:'./resumeData.json',
+      url:'/resumeData.json',
       dataType:'json',
       cache: false,
       success: function(data){
@@ -34,10 +35,18 @@ class App extends Component {
       }.bind(this),
       error: function(xhr, status, err){
         console.log(err);
-        alert(err);
+        //alert(err);
       }
     });
   }
+
+  
+  // getResumeData = () => function(data) {
+  //   return axios.get("resumeData.json")
+  //   .then(this.setState({resumeData: data}))
+  // }
+
+
 
   componentDidMount(){
     this.getResumeData();
